@@ -8,6 +8,10 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	var vid = document.getElementById("player1"); 
+	// Update volume value
+	var volumeInfo = document.getElementById("volume");
+	var volumePercent = (vid.volume * 100).toFixed(0);
+	volumeInfo.innerText = volumePercent + "%";
 	vid.play();
 });
 
