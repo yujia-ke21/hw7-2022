@@ -7,12 +7,12 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	var vid = document.getElementById("player1"); 
+	vid = document.getElementById("player1"); 
+	vid.play();
 	// Update volume value
 	var volumeInfo = document.getElementById("volume");
 	var volumePercent = (vid.volume * 100).toFixed(0);
 	volumeInfo.innerText = volumePercent + "%";
-	vid.play();
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -28,13 +28,13 @@ document.querySelector("#slower").addEventListener("click", function() {
 });
 
 document.querySelector("#faster").addEventListener("click", function() {
-	var vid = document.getElementById("player1"); 
+	vid = document.getElementById("player1"); 
 	vid.playbackRate += 0.1;
 	console.log("New speed is " + vid.playbackRate);
 });
 
 document.querySelector("#skip").addEventListener("click", function() {
-	var vid = document.getElementById("player1"); 
+	vid = document.getElementById("player1"); 
 	newTime = vid.currentTime + 10;
 	if (newTime >= vid.duration) {
 		vid.currentTime = 0;
@@ -45,19 +45,21 @@ document.querySelector("#skip").addEventListener("click", function() {
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
-	var vid = document.getElementById("player1");
+	vid = document.getElementById("player1");
 	var muteButton = document.getElementById("mute");
 	vid.muted = !vid.muted;
 	if (vid.muted) {
 		muteButton.innerText = "Unmute";
+		console.log("The video is muted");
 	  } else {
 		muteButton.innerText = "Mute";
+		console.log("The video is unmuted");
 	  }
 });
 
 document.querySelector("#slider").addEventListener("change", function(){
-    console.log(this.value);
-    var vid = document.getElementById("player1");
+        console.log(this.value);
+        vid = document.getElementById("player1");
 	var volumeSlider = document.getElementById("slider");
 	var volumeInfo = document.getElementById("volume");
 	vid.volume = volumeSlider.value / 100;
@@ -65,12 +67,15 @@ document.querySelector("#slider").addEventListener("change", function(){
 });
 
 document.querySelector("#vintage").addEventListener("click", function(){
-    var vid = document.getElementById("player1");
-	vid.classList.add("oldSchool")
+        vid = document.getElementById("player1");
+	vid.classList.add("oldSchool");
+	console.log("Old School style");
+	
 });
 
 document.querySelector("#orig").addEventListener("click", function(){
-    var vid = document.getElementById("player1");
+        vid = document.getElementById("player1");
 	vid.classList.remove("oldSchool")
+	console.log("Original style");
 });
 
